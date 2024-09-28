@@ -46,12 +46,16 @@ h2 {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0px 0px 20px rgba(0, 255, 204, 0.5);
+    position: relative;
+    animation: waterRipple 6s infinite alternate ease-in-out;
 }
 
 .wanted-item img {
     width: 150px;
     height: 150px;
     object-fit: cover;
+    filter: brightness(80%);
+    animation: rippleEffect 4s infinite alternate ease-in-out;
 }
 
 .details {
@@ -59,6 +63,8 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    animation: waterRipple 6s infinite alternate ease-in-out;
 }
 
 h3 {
@@ -69,6 +75,45 @@ h3 {
 p {
     font-size: 1.2em;
     color: #b3ffec;
+}
+
+/* Keyframes para las animaciones de ondulación */
+@keyframes rippleEffect {
+    0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(80%) blur(0);
+    }
+    50% {
+        transform: scale(1.05) translateY(-5px);
+        filter: brightness(90%) blur(1px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        filter: brightness(80%) blur(0);
+    }
+}
+
+@keyframes waterRipple {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Efecto de transición suave en hover */
+.wanted-item:hover {
+    box-shadow: 0px 0px 30px rgba(0, 255, 204, 0.7);
+    transition: box-shadow 0.5s ease;
+}
+
+.wanted-item:hover img {
+    filter: brightness(100%) blur(0);
+    transition: filter 0.5s ease;
 }
 
 @media (max-width: 600px) {
